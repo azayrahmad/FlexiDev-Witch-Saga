@@ -20,7 +20,7 @@ jobs:
 
         # Generate the website
         - name: Publish
-          run: dotnet publish WitchSaga.Web.csproj --configuration Release
+          run: dotnet publish WitchSaga.Web/WitchSaga.Web.csproj --configuration Release
 
         # Publish the website
         - name: GitHub Pages action
