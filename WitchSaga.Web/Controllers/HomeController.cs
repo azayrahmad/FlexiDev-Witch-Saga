@@ -1,21 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WitchSaga.Core;
 using WitchSaga.Web.Models;
 
 namespace WitchSaga.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly VillageCalculator _calculator;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(VillageCalculator calculator)
         {
-            _logger = logger;
+            _calculator = calculator;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Calculate(CalculateInputModel input)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", input);
+            }
+
+            var personA = new Person(input.AgeOfDeathA, input.YearOfDeathA);
+            var personB = new Person(input.AgeOfDeathB, input.YearOfDeathB);
+
+            double result = _calculator.CalculateAverage(personA, personB);
+
+            ViewBag.Result = result;
+
+            return View("Index", input);
         }
 
         public IActionResult Privacy()
