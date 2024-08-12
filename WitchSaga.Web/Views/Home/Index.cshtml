@@ -1,32 +1,48 @@
 ﻿@model WitchSaga.Web.Models.CalculateInputModel
 @{
-    ViewData["Title"] = "FlexiDev Witch Saga Calculator";
+    ViewData["Title"] = "FlexiDev Witch Saga Solver";
 }
 
 <h1>@ViewData["Title"]</h1>
 
+<blockquote>
+    Somewhere far far away, there is a village which is controlled by a dark and cunning witch. 
+    The witch is killing villager each year, with increasing pattern following the sum of Fibonacci 
+    numbers from the first year until current year. It's up to the brave programmer to guess her pattern of killing!
+</blockquote>
+
+<p>This application calculates the average number of people killed by the witch in the years of birth for two given individuals based on their ages and years of death.</p>
+
 <form asp-action="Calculate" method="post">
-    <div class="form-group">
-        <label asp-for="AgeOfDeathA"></label>
-        <input asp-for="AgeOfDeathA" class="form-control" />
-        <span asp-validation-for="AgeOfDeathA" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Person A</h4>
+            <div class="form-group">
+                <label asp-for="AgeOfDeathA"></label>
+                <input asp-for="AgeOfDeathA" class="form-control" />
+                <span asp-validation-for="AgeOfDeathA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfDeathA"></label>
+                <input asp-for="YearOfDeathA" class="form-control" />
+                <span asp-validation-for="YearOfDeathA" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Person B</h4>
+            <div class="form-group">
+                <label asp-for="AgeOfDeathB"></label>
+                <input asp-for="AgeOfDeathB" class="form-control" />
+                <span asp-validation-for="AgeOfDeathB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfDeathB"></label>
+                <input asp-for="YearOfDeathB" class="form-control" />
+                <span asp-validation-for="YearOfDeathB" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="YearOfDeathA"></label>
-        <input asp-for="YearOfDeathA" class="form-control" />
-        <span asp-validation-for="YearOfDeathA" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="AgeOfDeathB"></label>
-        <input asp-for="AgeOfDeathB" class="form-control" />
-        <span asp-validation-for="AgeOfDeathB" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="YearOfDeathB"></label>
-        <input asp-for="YearOfDeathB" class="form-control" />
-        <span asp-validation-for="YearOfDeathB" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Calculate</button>
+    <button type="submit" class="btn btn-primary mt-3">Calculate</button>
 </form>
 
 @if (ViewBag.Result != null)
