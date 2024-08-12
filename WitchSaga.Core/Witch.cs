@@ -1,21 +1,45 @@
-﻿namespace WitchSaga.Core
+﻿using System.Numerics;
+
+namespace WitchSaga.Core
 {
     /// <summary>
     /// Represents the witch who controls the village and determines the number of villagers killed each year.
     /// </summary>
     public class Witch
     {
-        static int fib(int n)
-        {
-            int[,] F = new int[,] { { 1, 1 }, { 1, 0 } };
-            if (n == 0)
-                return 0;
-            power(F, n - 1);
+        #region Fibonacci
 
-            return F[0, 0];
+        /// <summary>
+        /// Returns the Fibonacci number at specific position using Nth Power of Matrix Approach.
+        /// </summary>
+        /// <param name="n">Position of the Fibonacci number</param>
+        /// <returns>Fibonacci number at the position</returns>
+        static int Fibonacci(int n)
+        {
+            int a = 0;
+            int b = 1;
+            for (int i = 31; i >= 0; i--)
+            {
+                int d = a * (b * 2 - a);
+                int e = a * a + b * b;
+                a = d;
+                b = e;
+                if ((((uint)n >> i) & 1) != 0)
+                {
+                    int c = a + b;
+                    a = b;
+                    b = c;
+                }
+            }
+            return a;
         }
 
-        static void multiply(int[,] F, int[,] M)
+        /// <summary>
+        /// Multiply a matrix
+        /// </summary>
+        /// <param name="F">Matrix to multiply</param>
+        /// <param name="M">Matrix multiplier</param>
+        static void Multiply(int[,] F, int[,] M)
         {
             int x = F[0, 0] * M[0, 0] + F[0, 1] * M[1, 0];
             int y = F[0, 0] * M[0, 1] + F[0, 1] * M[1, 1];
@@ -28,37 +52,24 @@
             F[1, 1] = w;
         }
 
-        /* Optimized version of
-        power() in method 4 */
-        static void power(int[,] F, int n)
+        /// <summary>
+        /// Power of Matrix
+        /// </summary>
+        /// <param name="F">Matrix</param>
+        /// <param name="n">Power</param>
+        static void Power(int[,] F, int n)
         {
             if (n == 0 || n == 1)
                 return;
             int[,] M = new int[,] { { 1, 1 }, { 1, 0 } };
 
-            power(F, n / 2);
-            multiply(F, F);
+            Power(F, n / 2);
+            Multiply(F, F);
 
             if (n % 2 != 0)
-                multiply(F, M);
+                Multiply(F, M);
         }
-
-        /// <summary>
-        /// Returns the Fibonacci number at specific position.
-        /// </summary>
-        /// <param name="n">Position of the Fibonacci number</param>
-        /// <returns>Fibonacci number at the position</returns>
-        private int FibonacciAt(int n)
-        {
-            if (n <= 1)
-            {
-                return n;
-            }
-            else
-            {
-                return FibonacciAt(n - 1) + FibonacciAt(n - 2);
-            }
-        }
+        #endregion
 
         /// <summary>
         /// Decides the number of villagers to be killed in a specific year.
@@ -71,7 +82,7 @@
             if (year < 1)
                 throw new ArgumentException("Year must be positive", nameof(year));
 
-            return fib(year + 2) - 1;
+            return Fibonacci(year + 2) - 1;
         }
     }
 }

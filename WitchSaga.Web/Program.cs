@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<VillageCalculator>();
+builder.Services.AddTransient<BraveProgrammer>();
 
 var app = builder.Build();
 

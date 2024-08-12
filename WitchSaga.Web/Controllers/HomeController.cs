@@ -7,9 +7,9 @@ namespace WitchSaga.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly VillageCalculator _calculator;
+        private readonly BraveProgrammer _calculator;
 
-        public HomeController(VillageCalculator calculator)
+        public HomeController(BraveProgrammer calculator)
         {
             _calculator = calculator;
         }
@@ -30,7 +30,7 @@ namespace WitchSaga.Web.Controllers
             var personA = new Person(input.AgeOfDeathA, input.YearOfDeathA);
             var personB = new Person(input.AgeOfDeathB, input.YearOfDeathB);
 
-            double result = _calculator.CalculateAverage(personA, personB);
+            double result = _calculator.WitchSolver(personA, personB);
 
             ViewBag.Result = result;
 

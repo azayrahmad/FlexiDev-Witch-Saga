@@ -1,11 +1,11 @@
 ﻿namespace WitchSaga.Core
 {
     /// <summary>
-    /// Provides calculations related to the witch's killing patterns in the village.
+    /// Represent the brave programmer who solves the witch's killing patterns in the village.
     /// </summary>
-    public class VillageCalculator
+    public class BraveProgrammer
     {
-        private readonly Witch witch = new Witch();
+        private readonly Witch witch = new();
 
         /// <summary>
         /// Calculates the average number of people killed in the birth years of two persons.
@@ -16,7 +16,7 @@
         /// The average number of people killed in the birth years of the two persons,
         /// or -1 if either person was born before the witch took control.
         /// </returns>
-        public double CalculateAverage(Person personA, Person personB)
+        public double WitchSolver(Person personA, Person personB)
         {
             // Birth year 0 or below means witch haven't killed anyone/took control yet
             if (personA.BirthYear < 1 || personB.BirthYear < 1)
