@@ -18,6 +18,7 @@
         /// </returns>
         public double CalculateAverage(Person personA, Person personB)
         {
+            // Birth year 0 or below means witch haven't killed anyone/took control yet
             if (personA.BirthYear < 1 || personB.BirthYear < 1)
                 return -1;
 

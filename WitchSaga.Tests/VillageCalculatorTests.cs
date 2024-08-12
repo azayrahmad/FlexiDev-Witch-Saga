@@ -15,7 +15,7 @@ namespace WitchSaga.Tests
         }
 
         [Test]
-        public void CalculateAverage_InvalidInput_ReturnsNegativeOne()
+        public void CalculateAverage_PersonBornBeforeWitchReign_ReturnsNegativeOne()
         {
             var calculator = new VillageCalculator();
             var personA = new Person(12, 12);
