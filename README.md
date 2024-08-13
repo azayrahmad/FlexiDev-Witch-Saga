@@ -9,10 +9,13 @@ ASP .NET MVC web application that solves the witch's killing pattern by calculat
 - [Installation](#installation)
 - [Usage](#usage)
 - [Test](#test)
+- [Conclusion](#conclusion)
 
 ## Demo
 
-You can view a live demo of the application on Azure: [Witch Saga](https://witchsagaweb20240812101657.azurewebsites.net/)
+You can view a live demo of the application on Azure: [Witch Saga](https://witchsagaweb20240812101657.azurewebsites.net/). Please contact me if the web app is inactive.
+![image](https://github.com/user-attachments/assets/5584760a-8fcb-4bb8-9e4d-1fe7740dacc5)
+
 
 ## Features
 
@@ -45,3 +48,7 @@ Run the unit tests using this command:
 ```bash
 dotnet test
 ```
+
+## Conclusion
+
+I hope that this project meets all the requirements of the assessment. Please let me know if you have any questions or concerns.
